@@ -1,4 +1,6 @@
 # Example file showing a basic pygame "game loop"
+from random import random
+
 import pygame
 
 
@@ -17,6 +19,12 @@ def draw1(screen):
 def draw_square(screen):
     color = pygame.Color(50, 150, 50)
     pygame.draw.rect(screen, color, (20, 20, 100, 100), 0)
+
+
+def draw_pixels(screen):
+    for _ in range(10000):
+        screen.fill(pygame.Color('white'), (random() * width, random() * height, 10, 2))
+
 
 if __name__ == '__main__':
     # pygame setup
@@ -39,6 +47,7 @@ if __name__ == '__main__':
         # RENDER YOUR GAME HERE
         draw1(screen)
         draw_square(screen)
+        draw_pixels(screen)
         # flip() the display to put your work on screen
         pygame.display.flip()
 
