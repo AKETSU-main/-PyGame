@@ -12,29 +12,19 @@ if __name__ == '__main__':
     dt = 0
     fps = 60
 
-    player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
-
     while running:
+        screen.fill("purple")
         # poll for events
         # pygame.QUIT event means the user clicked X to close your window
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+            if event.type == pygame.MOUSEMOTION:
+                pygame.draw.circle(screen, "red", event.pos, 40)
+                pygame.draw.circle(screen, "red", (event.pos[0], width - event.pos[1]), 40)
+                pygame.draw.circle(screen, "red", (height - event.pos[0], event.pos[1]), 40)
 
         # fill the screen with a color to wipe away anything from last frame
-        screen.fill("purple")
-
-        pygame.draw.circle(screen, "red", player_pos, 40)
-
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_w]:
-            player_pos.y -= speed * dt
-        if keys[pygame.K_s]:
-            player_pos.y += speed * dt
-        if keys[pygame.K_a]:
-            player_pos.x -= speed * dt
-        if keys[pygame.K_d]:
-            player_pos.x += speed * dt
 
         # flip() the display to put your work on screen
         pygame.display.flip()
