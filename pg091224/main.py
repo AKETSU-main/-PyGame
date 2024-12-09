@@ -11,6 +11,8 @@ if __name__ == '__main__':
     speed = 150
     dt = 0
     fps = 60
+    MYEVENTTYPE = pygame.USEREVENT + 1
+    pygame.time.set_timer(MYEVENTTYPE, 1000)
 
     while running:
         screen.fill("purple")
@@ -23,7 +25,8 @@ if __name__ == '__main__':
                 pygame.draw.circle(screen, "red", event.pos, 40)
                 pygame.draw.circle(screen, "red", (event.pos[0], width - event.pos[1]), 40)
                 pygame.draw.circle(screen, "red", (height - event.pos[0], event.pos[1]), 40)
-
+            if event.type == MYEVENTTYPE:
+                print('Hello')
         # fill the screen with a color to wipe away anything from last frame
 
         # flip() the display to put your work on screen
