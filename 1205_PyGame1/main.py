@@ -34,6 +34,7 @@ if __name__ == '__main__':
     clock = pygame.time.Clock()
     running = True
 
+
     while running:
         # poll for events
         # pygame.QUIT event means the user clicked X to close your window
