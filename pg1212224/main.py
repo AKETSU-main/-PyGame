@@ -16,14 +16,18 @@ class Board:
                 pygame.draw.rect(screen, pygame.Color('white'), (
                 x * self.cell_size + self.left, y * self.cell_size + self.top, self.cell_size, self.cell_size), 1)
 
+    def set_view(self, left, top, cell_size):
+        self.left, self.top, self.cell_size = left, top, cell_size
+
 
 # pygame setup
 def main():
     pygame.init()
-    size = width, height = 600, 400
+    size = width, height = 1000, 1000
     screen = pygame.display.set_mode(size)
     clock = pygame.time.Clock()
-    board = Board(5, 7)
+    board = Board(8, 8)
+    board.set_view(50, 50, 50)
     running = True
     speed = 150
     dt = 0
